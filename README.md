@@ -174,14 +174,14 @@ segue a prática recomendada do Docker Compose para múltiplos ambientes.
 ## Prints do funcionamento
 
 Execução real e pública: [github.com/JessycaHernandez/ecoorbit-devops/actions](https://github.com/JessycaHernandez/ecoorbit-devops/actions)
-(commit `1c23f1e`). Resultado: **Success**, 4m 55s no total, 4 artefatos gerados.
+(commit `09d38fe`). Resultado: **Success**, 5m 6s no total, 4 artefatos gerados.
 
 | Job | Resultado | Duração |
 |---|---|---|
-| `build-and-test` | sucesso | 1m 13s |
-| `docker-build-push` | sucesso | 1m 3s |
-| `deploy-staging` | sucesso | 1m 3s |
-| `deploy-production` | sucesso | 1m 23s |
+| `build-and-test` | sucesso | 1m 3s |
+| `docker-build-push` | sucesso | 1m 6s |
+| `deploy-staging` | sucesso | 1m 26s |
+| `deploy-production` | sucesso | 1m 18s |
 
 Artefatos gerados pelo workflow: `evidencia-deploy-staging`, `evidencia-deploy-producao`,
 `ecoorbit-api-jar`, `relatorio-testes` (aba *Actions* → execução → *Artifacts*).
