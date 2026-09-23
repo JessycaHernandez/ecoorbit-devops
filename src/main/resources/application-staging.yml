@@ -1,0 +1,7 @@
+app:
+  environment: staging
+
+logging:
+  level:
+    root: INFO
+    com.ecoorbit: DEBUG

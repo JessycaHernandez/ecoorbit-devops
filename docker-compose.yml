@@ -1,0 +1,38 @@
+services:
+  api:
+    build: .
+    image: ecoorbit-api:${TAG:-local}
+    container_name: ecoorbit-api
+    restart: unless-stopped
+    environment:
+      MONGODB_URI: ${MONGODB_URI:-mongodb://mongo:27017/ecoOrbit}
+      APP_ENV: ${APP_ENV:-local}
+      SERVER_PORT: 8080
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - ecoorbit-net
+
+  mongo:
+    image: mongo:7
+    container_name: ecoorbit-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-ecoOrbit}
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ecoorbit-net
+
+networks:
+  ecoorbit-net:
+    driver: bridge
+
+volumes:
+  mongo-data:

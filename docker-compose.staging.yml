@@ -1,0 +1,19 @@
+services:
+  api:
+    container_name: ecoorbit-api-staging
+    ports:
+      - "8081:8080"
+    environment:
+      APP_ENV: staging
+      SPRING_PROFILES_ACTIVE: staging
+      MONGODB_URI: mongodb://mongo:27017/ecoOrbit_staging
+
+  mongo:
+    container_name: ecoorbit-mongo-staging
+    environment:
+      MONGO_INITDB_DATABASE: ecoOrbit_staging
+    volumes:
+      - mongo-data-staging:/data/db
+
+volumes:
+  mongo-data-staging:
